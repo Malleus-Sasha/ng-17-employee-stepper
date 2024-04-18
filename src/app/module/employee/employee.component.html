@@ -1,0 +1,325 @@
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-12 text-end">
+        <button class="btn btn-success">Add New</button>
+      </div>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Emp Code</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone No</th>
+          <th>Designation</th>
+          <th>Role</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+         <tr >
+            <td>empCode</td>
+            <td>empName</td>
+            <td>empEmailId</td>
+            <td>mobile</td>
+            <td>empDesignation</td>
+            <td>role</td>
+            <td>
+              <button class="btn btn-success">Edit</button>
+              <button class="btn btn-danger ml-2">Delete</button>
+            </td>
+         </tr>
+      </tbody> 
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-12 text-end">
+        <button class="btn btn-success">Go TO List View</button>
+      </div>
+    </div>
+    <div class="progress-wrapper">
+      <div id="progress-bar-container">
+        <ul>
+          <li class="step step01" 
+            >
+            <div class="step-inner">Step</div>
+          </li>
+        </ul>
+        <div id="line">
+          <div id="line-progress"></div>
+        </div>
+        <!-- progress-bar-container -->
+        <div id="progress-content-section">
+          <div class="section-content step1 active">
+            <div class="contaner-fluid">
+              <div class="row">
+                <div class="form-group text-start col-md-4">
+                  <label>Name :</label>
+                  <input type="text" placeholder="Enter Name" class="form-control">
+                </div>
+                <div class="form-group text-start col-md-4">
+                  <label>Email :</label>
+                  <input type="text" placeholder="Enter Email"
+                    class="form-control">
+                </div>
+                <div class="form-group text-start col-md-4">
+                  <label>Password :</label>
+                  <input type="password" placeholder="Enter Password"
+                    class="form-control">
+                </div>
+              </div>
+              <div class="row pb-2">
+                <div class="form-group text-start col-md-2">
+                  <label>Designation :</label>
+                  <select class="form-select">
+                    <option value="">Select Deisgnation</option>
+                    @for (item of designationList; track $index) {
+                    <option [value]="item.designationId"> {{item.designation}}</option>
+                    }
+                  </select>
+                </div>
+                <div class="form-group text-start col-md-2">
+                  <label>Role :</label>
+                  <select class="form-select">
+                    <option value="">Select Deisgnation</option>
+                    <option>Role</option>
+                  </select>
+                </div>
+                <div class="form-group text-start col-md-3">
+                  <label>Contact No :</label>
+                  <input type="text" placeholder="Enter Contact No"
+                    class="form-control">
+                </div>
+                <div class="form-group text-start col-md-3">
+                  <label>Alternate Contact No :</label>
+                  <input type="text" placeholder="Alternate Contact No."
+                    class="form-control">
+                </div>
+                <div class="form-group text-start col-md-3">
+                  <label>Personal Email ID :</label>
+                  <input type="text" placeholder="Enter Personal EmailID"
+                    class="form-control">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h6>Experience</h6>
+                  <hr>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group text-start col-md-3">
+                  <label>Total Years :</label>
+                  <input type="text"
+                    placeholder="Enter total Years of Experience" class="form-control">
+                </div>
+                <div class="form-group text-start col-md-3">
+                  <label>Total Month :</label>
+                  <input type="text" placeholder="Enter month of Experience"
+                    class="form-control">
+                </div>
+              </div>
+              <div class="row pt-2">
+                <div class="col-6">
+                  <h6>Current Address</h6>
+                  <hr>
+                  <div class="row">
+                    <div class="form-group text-start col-md-4">
+                      <label>City :</label>
+                      <input type="text" placeholder="Enter City"
+                        class="form-control">
+                    </div>
+                    <div class="form-group text-start col-md-4">
+                      <label>State :</label>
+                      <input type="text" placeholder="Enter State"
+                        class="form-control">
+                    </div>
+                    <div class="form-group text-start col-md-4">
+                      <label>Pin Code :</label>
+                      <input type="text" placeholder="Enter Pincode"
+                        class="form-control">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group text-start col-md-12">
+                      <label>Address :</label>
+                      <textarea placeholder="Enter Address"
+                        class="form-control"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <h6>Permanent Address</h6>
+                  <hr>
+                  <div class="row">
+                    <div class="form-group text-start col-md-4">
+                      <label>City :</label>
+                      <input type="text" placeholder="Enter City"
+                        class="form-control">
+                    </div>
+                    <div class="form-group text-start col-md-4">
+                      <label>State :</label>
+                      <input type="text" placeholder="Enter State"
+                        class="form-control">
+                    </div>
+                    <div class="form-group text-start col-md-4">
+                      <label>Pin Code :</label>
+                      <input type="text" placeholder="Enter Pincode"
+                        class="form-control">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group text-start col-md-12">
+                      <label>Address :</label>
+                      <textarea placeholder="Enter Address"
+                        class="form-control"></textarea>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 text-end">
+                  <button class="btn btn-primary">Next</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section-content step2 active">
+
+            <div class="contaner-fluid">
+              <div class="form-group text-start mt-2" id="tblSkill">
+                <div class=" ">
+                  <div class="row">
+                    <div class="col-6">
+                      <h5> Skills </h5>
+                    </div>
+                    <div class="col-6 text-end">
+                      <button class="btn btn-sm btn-info">Add</button>
+                    </div>
+                  </div>
+
+                  <div id="table-container">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Skill Name</th>
+                          <th>Total Experience</th>
+                          <th>Last Version</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr >
+                          <td>
+                            <input type="text" placeholder="Skill" class="form-control">
+                          </td>
+                          <td>
+                            <input type="text" placeholder="Total Experience"
+                              class="form-control">
+                          </td>
+                          <td>
+                            <input type="text" placeholder="Last Version"
+                              class="form-control">
+                          </td>
+
+                          <td class="btn-container">
+                            <button class="btn btn-sm btn-success"><i class="fa fa-save"></i>
+                              Save</button>
+                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</button>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                      <tfoot>
+                      </tfoot>
+                    </table>
+                    <div class="btn-container d-flex justify-content-end">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-end">
+                <button class="btn btn-primary">Next</button>
+              </div>
+            </div>
+          </div>
+          <div class="section-content step3 active">
+            <div class="contaner-fluid">
+              <div class="form-group text-start mt-2" id="tblExperience">
+                <div class=" ">
+                  <div class="row">
+                    <div class="col-6">
+                      <h5>Experience</h5>
+                    </div>
+                    <div class="col-6 text-end">
+                      <button class="btn btn-sm btn-info">Add</button>
+                    </div>
+                  </div>
+                  <div id="table-container">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Company</th>
+                          <th>Start Date</th>
+                          <th>End Date</th>
+                          <th>Designation</th>
+                          <th>Project</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <input type="text"class="form-control "
+                              placeholder="Company">
+                          </td>
+                          <td>
+                            <input type="date" class="form-control"
+                              placeholder="Start Date">
+                          </td>
+                          <td>
+                            <input type="date" class="form-control" placeholder="End Date">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control"
+                              placeholder="Designation">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control"
+                              placeholder="Project">
+                          </td>
+
+                          <td class="btn-container">
+                            <button class="btn btn-sm btn-success"><i class="fa fa-save"></i>
+                              Save</button>
+                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-end">
+                <button class="btn btn-success">Update Employee</button>
+                <button class="btn btn-primary">Save Employee</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

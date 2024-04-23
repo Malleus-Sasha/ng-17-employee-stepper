@@ -16,6 +16,7 @@ import { FormBuilder, FormGroup, NgForm, ReactiveFormsModule, Validators } from 
 export class EmployeeComponent implements OnInit {
   empForm!: FormGroup;
   empSkills!: FormGroup;
+  empExp!: FormGroup;
 
   stepsList: Step[] = [
     { stepName: EStepName.BasicDetails, isComplete: false },
@@ -104,7 +105,17 @@ export class EmployeeComponent implements OnInit {
     });
 
     this.empSkills = this.fb.group({
-      empPerAddress: ['', Validators.required],
+      skill: ['', Validators.required],
+      totalYearExp: ['', Validators.required],
+      lastVersionUsed: ['', Validators.required],
+    })
+
+    this.empExp = this.fb.group({
+      companyName: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+      designation: ['', Validators.required],
+      projectsWorkedOn: ['', Validators.required],
     })
     
   }

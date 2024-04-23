@@ -216,17 +216,17 @@
                           <th>Actions</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody [formGroup]="empSkills">
                         <tr >
                           <td>
-                            <input type="text" placeholder="Skill" class="form-control">
+                            <input formControlName="skill" type="text" placeholder="Skill" class="form-control">
                           </td>
                           <td>
-                            <input type="text" placeholder="Total Experience"
+                            <input formControlName="totalYearExp" type="text" placeholder="Total Experience"
                               class="form-control">
                           </td>
                           <td>
-                            <input type="text" placeholder="Last Version"
+                            <input formControlName="lastVersionUsed" type="text" placeholder="Last Version"
                               class="form-control">
                           </td>
 
@@ -278,25 +278,25 @@
                           <th>Actions</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody [formGroup]="empExp">
                         <tr>
                           <td>
-                            <input type="text"class="form-control "
+                            <input formControlName="companyName" type="text"class="form-control "
                               placeholder="Company">
                           </td>
                           <td>
-                            <input type="date" class="form-control"
+                            <input formControlName="startDate" type="date" class="form-control"
                               placeholder="Start Date">
                           </td>
                           <td>
-                            <input type="date" class="form-control" placeholder="End Date">
+                            <input formControlName="endDate" type="date" class="form-control" placeholder="End Date">
                           </td>
                           <td>
-                            <input type="text" class="form-control"
+                            <input formControlName="designation" type="text" class="form-control"
                               placeholder="Designation">
                           </td>
                           <td>
-                            <input type="text" class="form-control"
+                            <input formControlName="projectsWorkedOn" type="text" class="form-control"
                               placeholder="Project">
                           </td>
 

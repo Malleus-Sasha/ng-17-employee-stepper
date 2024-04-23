@@ -44,38 +44,41 @@
     <div class="progress-wrapper">
       <div id="progress-bar-container">
         <ul>
-          <li class="step step01" 
-            >
-            <div class="step-inner">Step</div>
-          </li>
+          @for (item of stepsList; track $index) {
+            <li class="step step01"
+              [ngClass]="item.stepName == activeStep.stepName ? 'active' : ''"
+              (click)="setActiveStep(item)">
+              <div class="step-inner">{{ item.stepName }}</div>
+            </li>
+          }
         </ul>
         <div id="line">
           <div id="line-progress"></div>
         </div>
         <!-- progress-bar-container -->
         <div id="progress-content-section">
-          <div class="section-content step1 active">
-            <div class="contaner-fluid">
+          <div class="section-content step1 active" *ngIf="activeStep.stepName == 'Basic Details'">
+            <div [formGroup]="empForm" class="contaner-fluid">
               <div class="row">
                 <div class="form-group text-start col-md-4">
                   <label>Name :</label>
-                  <input type="text" placeholder="Enter Name" class="form-control">
+                  <input formControlName="empName" type="text" placeholder="Enter Name" class="form-control">
                 </div>
                 <div class="form-group text-start col-md-4">
                   <label>Email :</label>
-                  <input type="text" placeholder="Enter Email"
+                  <input formControlName="empEmailId" type="text" placeholder="Enter Email"
                     class="form-control">
                 </div>
                 <div class="form-group text-start col-md-4">
                   <label>Password :</label>
-                  <input type="password" placeholder="Enter Password"
+                  <input formControlName="password" type="password" placeholder="Enter Password"
                     class="form-control">
                 </div>
               </div>
               <div class="row pb-2">
                 <div class="form-group text-start col-md-2">
                   <label>Designation :</label>
-                  <select class="form-select">
+                  <select formControlName="empDesignationId" class="form-select">
                     <option value="">Select Deisgnation</option>
                     @for (item of designationList; track $index) {
                     <option [value]="item.designationId"> {{item.designation}}</option>
@@ -84,24 +87,24 @@
                 </div>
                 <div class="form-group text-start col-md-2">
                   <label>Role :</label>
-                  <select class="form-select">
+                  <select formControlName="roleId" class="form-select">
                     <option value="">Select Deisgnation</option>
                     <option>Role</option>
                   </select>
                 </div>
                 <div class="form-group text-start col-md-3">
                   <label>Contact No :</label>
-                  <input type="text" placeholder="Enter Contact No"
+                  <input formControlName="empContactNo" type="text" placeholder="Enter Contact No"
                     class="form-control">
                 </div>
                 <div class="form-group text-start col-md-3">
                   <label>Alternate Contact No :</label>
-                  <input type="text" placeholder="Alternate Contact No."
+                  <input formControlName="empAltContactNo" type="text" placeholder="Alternate Contact No."
                     class="form-control">
                 </div>
                 <div class="form-group text-start col-md-3">
                   <label>Personal Email ID :</label>
-                  <input type="text" placeholder="Enter Personal EmailID"
+                  <input formControlName="empPersonalEmailId" type="text" placeholder="Enter Personal EmailID"
                     class="form-control">
                 </div>
               </div>
@@ -114,12 +117,12 @@
               <div class="row">
                 <div class="form-group text-start col-md-3">
                   <label>Total Years :</label>
-                  <input type="text"
+                  <input formControlName="empExpTotalYear" type="text"
                     placeholder="Enter total Years of Experience" class="form-control">
                 </div>
                 <div class="form-group text-start col-md-3">
                   <label>Total Month :</label>
-                  <input type="text" placeholder="Enter month of Experience"
+                  <input formControlName="empExpTotalMonth" type="text" placeholder="Enter month of Experience"
                     class="form-control">
                 </div>
               </div>
@@ -130,24 +133,24 @@
                   <div class="row">
                     <div class="form-group text-start col-md-4">
                       <label>City :</label>
-                      <input type="text" placeholder="Enter City"
+                      <input formControlName="empCity" type="text" placeholder="Enter City"
                         class="form-control">
                     </div>
                     <div class="form-group text-start col-md-4">
                       <label>State :</label>
-                      <input type="text" placeholder="Enter State"
+                      <input formControlName="empState" type="text" placeholder="Enter State"
                         class="form-control">
                     </div>
                     <div class="form-group text-start col-md-4">
                       <label>Pin Code :</label>
-                      <input type="text" placeholder="Enter Pincode"
+                      <input formControlName="empPinCode" type="text" placeholder="Enter Pincode"
                         class="form-control">
                     </div>
                   </div>
                   <div class="row">
                     <div class="form-group text-start col-md-12">
                       <label>Address :</label>
-                      <textarea placeholder="Enter Address"
+                      <textarea formControlName="empAddress" placeholder="Enter Address"
                         class="form-control"></textarea>
                     </div>
                   </div>
@@ -158,24 +161,24 @@
                   <div class="row">
                     <div class="form-group text-start col-md-4">
                       <label>City :</label>
-                      <input type="text" placeholder="Enter City"
+                      <input formControlName="empPerCity" type="text" placeholder="Enter City"
                         class="form-control">
                     </div>
                     <div class="form-group text-start col-md-4">
                       <label>State :</label>
-                      <input type="text" placeholder="Enter State"
+                      <input formControlName="empPerState" type="text" placeholder="Enter State"
                         class="form-control">
                     </div>
                     <div class="form-group text-start col-md-4">
                       <label>Pin Code :</label>
-                      <input type="text" placeholder="Enter Pincode"
+                      <input formControlName="empPerPinCode" type="text" placeholder="Enter Pincode"
                         class="form-control">
                     </div>
                   </div>
                   <div class="row">
                     <div class="form-group text-start col-md-12">
                       <label>Address :</label>
-                      <textarea placeholder="Enter Address"
+                      <textarea formControlName="empPerAddress" placeholder="Enter Address"
                         class="form-control"></textarea>
                     </div>
                   </div>
@@ -189,7 +192,7 @@
               </div>
             </div>
           </div>
-          <div class="section-content step2 active">
+          <div class="section-content step2 active" *ngIf="activeStep.stepName == 'Skills'">
 
             <div class="contaner-fluid">
               <div class="form-group text-start mt-2" id="tblSkill">
@@ -251,7 +254,7 @@
               </div>
             </div>
           </div>
-          <div class="section-content step3 active">
+          <div class="section-content step3 active" *ngIf="activeStep.stepName == 'Experience'">
             <div class="contaner-fluid">
               <div class="form-group text-start mt-2" id="tblExperience">
                 <div class=" ">

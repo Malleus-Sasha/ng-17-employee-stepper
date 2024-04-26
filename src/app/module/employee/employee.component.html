@@ -110,7 +110,7 @@
               </div>
               <div class="row">
                 <div class="col-6">
-                  <h6>Experience</h6>
+                  <h4>Experience</h4>
                   <hr>
                 </div>
               </div>
@@ -128,7 +128,7 @@
               </div>
               <div class="row pt-2">
                 <div class="col-6">
-                  <h6>Current Address</h6>
+                  <h4>Current Address</h4>
                   <hr>
                   <div class="row">
                     <div class="form-group text-start col-md-4">
@@ -156,7 +156,7 @@
                   </div>
                 </div>
                 <div class="col-6">
-                  <h6>Permanent Address</h6>
+                  <h4>Permanent Address</h4>
                   <hr>
                   <div class="row">
                     <div class="form-group text-start col-md-4">
@@ -202,12 +202,12 @@
                       <h5> Skills </h5>
                     </div>
                     <div class="col-6 text-end">
-                      <button class="btn btn-sm btn-info">Add</button>
+                      <button class="btn btn-sm btn-info" (click)="addSkills()">Add</button>
                     </div>
                   </div>
 
                   <div id="table-container">
-                    <table class="table table-bordered">
+                    <table [formGroup]="empSkillsForm" class="table table-bordered">
                       <thead>
                         <tr>
                           <th>Skill Name</th>
@@ -216,27 +216,28 @@
                           <th>Actions</th>
                         </tr>
                       </thead>
-                      <tbody [formGroup]="empSkills">
-                        <tr >
+                      <!-- ??? for of employeeObj.erpEmployeeSkills -->
+                      <tbody formArrayName="empSkillsArray">
+                        <tr *ngFor="let group of empSkillsArray.controls; let i=index" [formGroupName]="i">
+                          <!-- T -->
                           <td>
                             <input formControlName="skill" type="text" placeholder="Skill" class="form-control">
                           </td>
                           <td>
-                            <input formControlName="totalYearExp" type="text" placeholder="Total Experience"
-                              class="form-control">
+                            <input formControlName="totalYearExp" type="text" placeholder="Total Experience" class="form-control">
                           </td>
                           <td>
-                            <input formControlName="lastVersionUsed" type="text" placeholder="Last Version"
-                              class="form-control">
+                            <input formControlName="lastVersionUsed" type="text" placeholder="Last Version" class="form-control">
                           </td>
 
                           <td class="btn-container">
-                            <button class="btn btn-sm btn-success"><i class="fa fa-save"></i>
-                              Save</button>
+                            <button class="btn btn-sm btn-success">
+                              <i class="fa fa-save"></i>
+                              Save
+                            </button>
                             <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</button>
                           </td>
                         </tr>
-
                       </tbody>
                       <tfoot>
                       </tfoot>
@@ -263,7 +264,7 @@
                       <h5>Experience</h5>
                     </div>
                     <div class="col-6 text-end">
-                      <button class="btn btn-sm btn-info">Add</button>
+                      <button class="btn btn-sm btn-info" (click)="addExp()">Add</button>
                     </div>
                   </div>
                   <div id="table-container">
@@ -278,6 +279,7 @@
                           <th>Actions</th>
                         </tr>
                       </thead>
+                      <!-- ??? for of employeeObj.ermEmpExperiences -->
                       <tbody [formGroup]="empExp">
                         <tr>
                           <td>
@@ -301,8 +303,10 @@
                           </td>
 
                           <td class="btn-container">
-                            <button class="btn btn-sm btn-success"><i class="fa fa-save"></i>
-                              Save</button>
+                            <button class="btn btn-sm btn-success">
+                              <i class="fa fa-save"></i>
+                              Save
+                            </button>
                             <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</button>
                           </td>
                         </tr>

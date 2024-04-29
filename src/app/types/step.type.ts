@@ -1,6 +1,6 @@
 export type Step = {
   stepName: EStepName;
-  isComplete: false;
+  isComplete: boolean;
 };
 
 export type StepName = "Skills" | "Basic Details" | "Experience";

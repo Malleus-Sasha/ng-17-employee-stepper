@@ -12,6 +12,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from "@angular/forms";
+import { EmployeeService } from "../../services/employees.service";
+import { EmployeeRole } from "../../types/employee-role.type";
+import { EmployeeAll } from "../../types/employee-all.type";
 
 @Component({
   selector: "a-employee",
@@ -31,8 +34,13 @@ export class EmployeeComponent implements OnInit {
     { stepName: EStepName.Skills, isComplete: false },
     { stepName: EStepName.Experience, isComplete: false },
   ];
-  activeStep = this.stepsList[0];
+  activeStep: Step = this.stepsList[0];
+  stepperCompletionValue:number = 8;
+
   designationList: any = [{ designationId: 1, designation: "designation" }];
+  roleList: EmployeeRole[] = [];
+
+  employeeList: any[] = [];
 
   employeeObj: Employee = {
     roleId: 0,
@@ -75,14 +83,17 @@ export class EmployeeComponent implements OnInit {
     totalYearExp: 0,
     lastVersionUsed: "",
   };
-  // STEP
-  setActiveStep(step: any) {
-    this.activeStep = step;
-  }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private employeesService: EmployeeService,
+  ) {}
 
   ngOnInit(): void {
+    this.loadAllEmployees();
+    this.loadDesignations();
+    this.loadRoles();
+    
     this.initEmpForm();
   }
 
@@ -158,6 +169,30 @@ export class EmployeeComponent implements OnInit {
     // console.log("ConrolsAr:", this.empSkillsArray.controls);
   }
 
+    // STEP
+  setActiveStep(step: any) {
+    this.activeStep = step;
+  }
+
+  gotoStep2() {
+    console.log(':gotoStep2:', this.empForm.getRawValue());
+
+    const currentStep = this.stepsList.find(m => m.stepName == this.activeStep.stepName);
+    currentStep!.isComplete = true;
+    this.activeStep = this.stepsList[1];
+    this.stepperCompletionValue = 50;
+  };
+
+  gotoStep3() {
+    console.log(':gotoStep2:', this.empForm.getRawValue());
+
+    const currentStep = this.stepsList.find(m => m.stepName == this.activeStep.stepName);
+    currentStep!.isComplete = true;
+    this.activeStep = this.stepsList[2];
+    this.stepperCompletionValue = 100;
+  }
+
+
   addExp() {
     const expObj: EmployeeExp = {
       empExpId: 0,
@@ -172,5 +207,39 @@ export class EmployeeComponent implements OnInit {
 
     console.log(':EMPLOYEE FORM:');
     console.dir(this.empExp);
+  }
+
+
+  // *** HTTP
+  loadDesignations() {
+    // & async
+    this.employeesService.getDesignations().subscribe((res: any) => {
+      console.log('Load: Desgn: ', res);
+      this.designationList = res.data;
+    });
+  }
+
+  loadRoles() {
+    this.employeesService.getRoles().subscribe((res:any)=>{
+      console.log(':GET: Roles:', res);
+      this.roleList = res.data;
+    })
+  }
+
+  saveEmployee() {
+    console.log(':SaveEmpl: ', this.empForm.getRawValue());
+    this.employeesService.saveEmployee(this.empForm.getRawValue())
+  }
+
+  loadAllEmployees() {
+    this.employeesService.getAllEmployees().subscribe((res) => {
+      console.log('ALL:EMPL: ', res);
+      this.employeeList = res.data;
+    })
+  }
+
+  // **** OTHER
+  empTrackBy(index: number, item: EmployeeAll) {
+    return item.empCode;
   }
 }

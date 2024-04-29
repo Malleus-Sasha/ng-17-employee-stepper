@@ -144,7 +144,7 @@ body {
 }
 #progress-content-section .section-content {
   padding: 30px 40px;
-  text-align: center;
+  // text-align: center;
 }
 
 .section-content h2 {
@@ -236,4 +236,8 @@ hr {
   }
 }
 // *******
+
+label {
+  display: block;
+}
 

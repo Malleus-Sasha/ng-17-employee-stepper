@@ -42,6 +42,8 @@ export class EmployeeComponent implements OnInit {
 
   employeeList: any[] = [];
 
+  isCreateView = false;
+
   employeeObj: Employee = {
     roleId: 0,
     empId: 0,
@@ -209,6 +211,19 @@ export class EmployeeComponent implements OnInit {
     console.dir(this.empExp);
   }
 
+  addNew() {
+    this.isCreateView = true;
+  }
+
+  onEdit(id: number) {
+    this.employeesService.getEmployee(id).subscribe((res)=>{
+      console.log(':GET:EDIT:EMP:', res);
+      this.employeeObj = res.data;
+      this.employeeObj.empId =  id;
+      this.isCreateView = true;
+    })
+  }
+
 
   // *** HTTP
   loadDesignations() {
@@ -228,7 +243,15 @@ export class EmployeeComponent implements OnInit {
 
   saveEmployee() {
     console.log(':SaveEmpl: ', this.empForm.getRawValue());
-    this.employeesService.saveEmployee(this.empForm.getRawValue())
+    this.employeesService.saveEmployee(this.empForm.getRawValue()).subscribe((res) => {
+      if(res.result) {
+        alert('Employee Created Success');
+        this.loadAllEmployees();
+        this.isCreateView = false;
+      } else {
+        alert(res.message)
+      }
+    })
   }
 
   loadAllEmployees() {
@@ -236,6 +259,32 @@ export class EmployeeComponent implements OnInit {
       console.log('ALL:EMPL: ', res);
       this.employeeList = res.data;
     })
+  }
+
+  updateEmployee() {
+    this.employeesService.updateEmployee(this.empForm.getRawValue()).subscribe((res:any)=>{
+      if(res.result) {
+        alert('Employee Created Success')
+        this.loadAllEmployees();
+        this.isCreateView = false;
+      } else {
+        alert(res.message)
+      }
+    })
+  }
+
+  delete(id: number) {
+    const isDelete = confirm("Are You sure want to delete");
+    if(isDelete) {
+      this.employeesService.deleteEmployee(id).subscribe((res:any)=>{
+        if(res.result) {
+          alert('Employee Deleted Success');
+          this.loadAllEmployees();
+        } else {
+          alert(res.message)
+        }
+      })
+    }
   }
 
   // **** OTHER

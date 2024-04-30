@@ -1,8 +1,8 @@
-<div class="row">
+<div class="row" *ngIf="!isCreateView">
   <div class="col-12">
     <div class="row">
       <div class="col-12 text-end">
-        <button class="btn btn-success">Add New</button>
+        <button class="btn btn-success" (click)="addNew()">Add New</button>
       </div>
     </div>
     <table class="table table-bordered">
@@ -19,26 +19,26 @@
       </thead>
       <tbody>
          <tr *ngFor="let item of employeeList; trackBy: empTrackBy">
-            <td>empCode</td>
-            <td>empName</td>
-            <td>empEmailId</td>
-            <td>mobile</td>
-            <td>empDesignation</td>
-            <td>role</td>
+            <td>{{item.empCode}}</td>
+            <td>{{item.empName}}</td>
+            <td>{{item.empEmailId}}</td>
+            <td>{{item.mobile}}</td>
+            <td>{{item.empDesignation}}</td>
+            <td>{{item.role}}</td>
             <td>
-              <button class="btn btn-success">Edit</button>
-              <button class="btn btn-danger ml-2">Delete</button>
+              <button class="btn btn-success" (click)="onEdit(item.empId)">Edit</button>
+              <button class="btn btn-danger ml-2" (click)="onDelete(item.empId)">Delete</button>
             </td>
          </tr>
       </tbody> 
     </table>
   </div>
 </div>
-<div class="row">
+<div class="row" *ngIf="isCreateView">
   <div class="col-12">
     <div class="row">
       <div class="col-12 text-end">
-        <button class="btn btn-success">Go TO List View</button>
+        <button class="btn btn-success" (click)="isCreateView=false">Go TO List View</button>
       </div>
     </div>
     <div class="progress-wrapper">

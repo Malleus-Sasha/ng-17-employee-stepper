@@ -70,6 +70,16 @@ body {
 // T
 .table {
   width: 100%;
+  margin: 5px 0;
+  border: 1px dashed gray;
+
+  th {
+    border: 1px solid var(--primary);
+  }
+
+  td {
+    border: 1px solid var(--info)
+  }
 }
 
 
